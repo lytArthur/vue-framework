@@ -1,6 +1,7 @@
 <template>
     <div>
         this is home div
+        <button @click="change">click</button>
     </div>
 </template>
 <script>
@@ -15,7 +16,11 @@
 
         },
         methods: {
-            
+            change() {
+                this.$router.push({
+                    path:'/setting'
+                })
+            }
         }
     }
 </script>
