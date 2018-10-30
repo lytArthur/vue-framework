@@ -1,22 +1,33 @@
 <template>
     <div>
-        this is settting page11
+        <head-nav></head-nav>
     </div>
 </template>
 
 <script>
+import headNav from '../../components/header/index.vue'
+import { 
+    login, 
+    interfaceList }  from '../../api/setting/index.js'
     export default {
-        name: 'settingIndex',
+        name: 'setting',
+        components: {
+            headNav
+        },
         data() {
             return {
 
             }
         },
         mounted() {
-
+            this.getList()
         },
         methods: {
-            
+            getList(){
+                interfaceList().then(res => {
+                    console.log()
+                })
+            }
         }
     }
 </script>

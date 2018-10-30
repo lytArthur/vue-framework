@@ -13,14 +13,14 @@
             }
         },
         mouted() {
-
+            this.bindAccount()
         },
         methods: {
             change() {
                 this.$router.push({
                     path:'/setting'
                 })
-            }
+            },
         }
     }
 </script>

@@ -3,28 +3,22 @@
 import axios from 'axios'
 import { Loading, Message } from 'element-ui'
 
+//超时设定
+axios.defaults.timeout = 10000;
+
 // 拦截器 reuquest 
-var loadinginstace
 axios.interceptors.request.use(config => {
-    loadinginstace = Loading.service({ fullscreen: true })
     return config
 }, err => {
-    loadinginstace.close()
+    Message.error('请求超时');
     return Promise.reject(err)
 })
 
-//拦截器 response
+//拦截器 response  相应错误的统一处理
 axios.interceptors.response.use(response => {
-    loadinginstace.close()
+    switch(response.status) {}
     return response
 }, err => {
-    loadinginstace.close()
-    if(err.response) {
-        switch(err.response.status) {
-            case 404:
-            console.log('this is 404 page')
-        }
-    }
     return Promise.reject(err)
 })
 
